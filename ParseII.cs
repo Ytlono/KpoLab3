@@ -1,101 +1,83 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Formats.Tar;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
 
 namespace Lab3
 {
     public class ParseII
     {
-        private string fileIn;
-        public string text;
-        public Text tokenSentences;
-        public Sentence sentences;
-        public Word words;
-        public Punctuation punctuations;
+        private string inputFilePath;
+        public string inputText;
+        public Text parsedText;
 
-        public ParseII(string fileIn)
+        public ParseII(string inputFilePath)
         {
-            this.fileIn = fileIn;
-            this.tokenSentences = new Text();
-            this.sentences = new Sentence();
-            this.words = new Word();
-            this.punctuations = new Punctuation();
-
+            this.inputFilePath = inputFilePath;
+            this.parsedText = new Text();
         }
+
         public void Run()
         {
-            using StreamReader reader = new StreamReader(fileIn);
-            text = reader.ReadToEnd();
+            using StreamReader reader = new StreamReader(inputFilePath);
+            inputText = reader.ReadToEnd();
 
-            List<string> sentencesList = TextToSentences(text);
-
+            List<string> sentencesList = TextToSentences(inputText);
             SentencesToTokens(sentencesList);
+
+            Print();
         }
 
         public List<string> TextToSentences(string text)
-        {   
-            List<string> sentenceList = new List<string>();
-            sentenceList = Regex.Split(text, @"(?<=[.!?])\s+").ToList();
+        {
+            List<string> sentenceList = Regex.Split(text, @"(?<=[.!?])\s+").ToList();
             return sentenceList;
         }
 
         public void SentencesToTokens(List<string> sentenceList)
         {
-            
-            foreach (var sentence in sentenceList) {
+            foreach (var sentence in sentenceList)
+            {
+                Sentence newSentence = new Sentence(); // Новый объект предложения
 
                 var matches = Regex.Matches(sentence, @"\w+|[.,!?]");
-
                 foreach (var match in matches)
                 {
                     string token = match.ToString();
 
                     if (Regex.IsMatch(token, @"\w+"))
                     {
-                        words.word = token;
-                        sentences.tokens.Add(words);
+                        Word newWord = new Word { word = token }; // Новый объект Word
+                        newSentence.tokens.Add(newWord);
                     }
-                    else if(Regex.IsMatch(token, @"[.,!?]"))
-                    { 
-                        punctuations.symbol = token;
-                        sentences.tokens.Add(punctuations);
+                    else if (Regex.IsMatch(token, @"[.,!?]"))
+                    {
+                        Punctuation newPunctuation = new Punctuation { symbol = token }; // Новый объект Punctuation
+                        newSentence.tokens.Add(newPunctuation);
                     }
-                    
                 }
-                tokenSentences.sentenceTokenList.Add(sentences);
-            }
 
+                parsedText.sentenceTokenList.Add(newSentence); // Добавляем предложение в список
+            }
         }
 
         private void Print()
         {
-            // Проход по каждому предложению в списке предложений
-            foreach (var sentence in tokenSentences.sentenceTokenList)
+            foreach (var sentence in parsedText.sentenceTokenList)
             {
-                // Проход по каждому токену (слово или знак препинания) в предложении
                 foreach (var token in sentence.tokens)
                 {
-                    // Если токен — это слово
                     if (token is Word word)
                     {
-                        Console.WriteLine(word.word);
+                        Console.WriteLine(word.word); // Вывод слова
                     }
-                    // Если токен — это знак препинания
                     else if (token is Punctuation punctuation)
                     {
-                        Console.WriteLine(punctuation.symbol);
+                        Console.WriteLine(punctuation.symbol); // Вывод знака препинания
                     }
                 }
             }
         }
-
-
     }
-
 }

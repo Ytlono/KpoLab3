@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab3
+﻿namespace Lab3
 {
     public class Sentence
     {
@@ -16,5 +9,4 @@ namespace Lab3
             tokens = new List<Token>();
         }
     }
-
 }
