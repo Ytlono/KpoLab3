@@ -1,0 +1,163 @@
+using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+
+public class ImageFiltering
+{
+    // Применение простого фильтра (усреднение)
+    public static Bitmap ApplySimpleFilter(Bitmap source, int kernelSize)
+    {
+        Bitmap result = new Bitmap(source.Width, source.Height);
+        double[,] kernel = CreateSimpleKernel(kernelSize);
+
+        for (int x = 0; x < source.Width; x++)
+        {
+            for (int y = 0; y < source.Height; y++)
+            {
+                double r = 0, g = 0, b = 0;
+
+                for (int i = 0; i < kernelSize; i++)
+                {
+                    for (int j = 0; j < kernelSize; j++)
+                    {
+                        int offsetX = x + i - kernelSize / 2;
+                        int offsetY = y + j - kernelSize / 2;
+                        Color neighborColor = BilinearInterpolation(source, offsetX, offsetY);
+                        r += neighborColor.R * kernel[i, j];
+                        g += neighborColor.G * kernel[i, j];
+                        b += neighborColor.B * kernel[i, j];
+                    }
+                }
+
+                int red = Math.Min(255, Math.Max(0, (int)r));
+                int green = Math.Min(255, Math.Max(0, (int)g));
+                int blue = Math.Min(255, Math.Max(0, (int)b));
+
+                result.SetPixel(x, y, Color.FromArgb(red, green, blue));
+            }
+        }
+        return result;
+    }
+
+    // Создание простого ядра (усреднение)
+    public static double[,] CreateSimpleKernel(int size)
+    {
+        double[,] kernel = new double[size, size];
+        double value = 1.0 / (size * size);
+
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                kernel[i, j] = value;
+            }
+        }
+        return kernel;
+    }
+
+    // Применение Гауссовского фильтра
+    public static Bitmap ApplyGaussianFilter(Bitmap source, double sigma)
+    {
+        int kernelSize = (int)(6 * sigma) + 1;
+        double[,] kernel = CreateGaussianKernel(kernelSize, sigma);
+        Bitmap result = new Bitmap(source.Width, source.Height);
+
+        for (int x = 0; x < source.Width; x++)
+        {
+            for (int y = 0; y < source.Height; y++)
+            {
+                double r = 0, g = 0, b = 0;
+
+                for (int i = 0; i < kernelSize; i++)
+                {
+                    for (int j = 0; j < kernelSize; j++)
+                    {
+                        int offsetX = x + i - kernelSize / 2;
+                        int offsetY = y + j - kernelSize / 2;
+                        Color neighborColor = BilinearInterpolation(source, offsetX, offsetY);
+                        r += neighborColor.R * kernel[i, j];
+                        g += neighborColor.G * kernel[i, j];
+                        b += neighborColor.B * kernel[i, j];
+                    }
+                }
+
+                int red = Math.Min(255, Math.Max(0, (int)r));
+                int green = Math.Min(255, Math.Max(0, (int)g));
+                int blue = Math.Min(255, Math.Max(0, (int)b));
+
+                result.SetPixel(x, y, Color.FromArgb(red, green, blue));
+            }
+        }
+        return result;
+    }
+
+    // Создание Гауссовского ядра
+    public static double[,] CreateGaussianKernel(int size, double sigma)
+    {
+        double[,] kernel = new double[size, size];
+        double sigma2 = 2 * sigma * sigma;
+        double piSigma2 = Math.PI * sigma2;
+        double sum = 0;
+
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                int x = i - size / 2;
+                int y = j - size / 2;
+                kernel[i, j] = Math.Exp(-(x * x + y * y) / sigma2) / piSigma2;
+            }
+        }
+
+        return kernel;
+    }
+
+    // Билинейная интерполяция пикселей за границами изображения
+    public static Color BilinearInterpolation(Bitmap source, int x, int y)
+    {
+        if (x >= 0 && x < source.Width && y >= 0 && y < source.Height)
+        {
+            return source.GetPixel(x, y);
+        }
+
+        int clampedX = Math.Max(0, Math.Min(x, source.Width - 1));
+        int clampedY = Math.Max(0, Math.Min(y, source.Height - 1));
+
+        return source.GetPixel(clampedX, clampedY);
+    }
+
+    // Сохранение изображения
+    public static void SaveImage(Bitmap image, string folder, string fileName)
+    {
+        if (!Directory.Exists(folder))
+        {
+            Directory.CreateDirectory(folder);
+        }
+
+        string path = Path.Combine(folder, fileName);
+        image.Save(path, ImageFormat.Png);
+    }
+
+    // Главный метод программы
+    static void Main(string[] args)
+    {
+        // Загружаем исходное изображение
+        Bitmap sourceImage = new Bitmap("2.png");
+
+        // Применяем простой фильтр с размером ядра 5
+        Bitmap simpleFiltered = ApplySimpleFilter(sourceImage, 5);
+        Console.WriteLine("Simple Filter already done...");
+        // Сохраняем результат простого фильтра
+        SaveImage(simpleFiltered, "Data", "output_simple.png");
+
+        Console.Write("Enter Sigma: ");
+        double sigma = double.Parse(Console.ReadLine());
+        Bitmap gaussianFiltered = ApplyGaussianFilter(sourceImage, sigma);
+        // Сохраняем результат Гауссовского фильтра
+        SaveImage(gaussianFiltered, "Data", "output_gaussian.png");
+        Console.WriteLine("Simple Filter already done...");
+        // Выводим сообщение о завершении
+        Console.WriteLine("Image Filtered!!!");
+    }
+}
