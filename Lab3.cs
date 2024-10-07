@@ -11,7 +11,6 @@ namespace Lab3
         public static void Main(string[] args)
         {
             string fileIn = "text.txt";
-            string fileText = "text.txt";
             ParseII parse = new ParseII(fileIn);
             parse.Run();
 

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using System.Xml.Serialization;
 
 namespace Lab3
 {
@@ -39,7 +36,7 @@ namespace Lab3
         {
             foreach (var sentence in sentenceList)
             {
-                Sentence newSentence = new Sentence(); // Новый объект предложения
+                Sentence newSentence = new Sentence(); // Новый объект предложения для каждого цикла
 
                 var matches = Regex.Matches(sentence, @"\w+|[.,!?]");
                 foreach (var match in matches)
@@ -48,19 +45,22 @@ namespace Lab3
 
                     if (Regex.IsMatch(token, @"\w+"))
                     {
-                        Word newWord = new Word { word = token }; // Новый объект Word
+                        // Создаем новый объект Word для каждого найденного слова
+                        Word newWord = new Word { word = token };
                         newSentence.tokens.Add(newWord);
                     }
                     else if (Regex.IsMatch(token, @"[.,!?]"))
                     {
-                        Punctuation newPunctuation = new Punctuation { symbol = token }; // Новый объект Punctuation
+                        // Создаем новый объект Punctuation для каждого знака препинания
+                        Punctuation newPunctuation = new Punctuation { symbol = token };
                         newSentence.tokens.Add(newPunctuation);
                     }
                 }
 
-                parsedText.sentenceTokenList.Add(newSentence); // Добавляем предложение в список
+                parsedText.sentenceTokenList.Add(newSentence); // Добавляем предложение в общий список
             }
         }
+
 
         private void Print()
         {
