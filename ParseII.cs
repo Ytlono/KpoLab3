@@ -55,7 +55,7 @@ namespace Lab3
                         newSentence.tokens.Add(newPunctuation);
                     }
                 }
-
+                newSentence.CalculateSentenceLengthByWord();
                 parsedText.sentenceTokenList.Add(newSentence); 
             }
         }

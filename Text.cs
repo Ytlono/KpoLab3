@@ -15,6 +15,12 @@ namespace Lab3
 
         public void SortSentencesByWordCount() 
         {
+            var sortedSentences = sentenceTokenList.OrderBy(sentence => sentence.SentenceLengthByWord);
+
+            foreach (var sentence in sortedSentences)
+            {
+                Console.WriteLine(sentence.ToString());
+            }
 
         }
 

@@ -6,7 +6,7 @@ namespace Lab3
     {
         private static void Menu()
         {
-            Console.WriteLine("Меню:");
+            Console.WriteLine("Menu:");
             Console.WriteLine("1. Вывести все предложения в порядке возрастания количества слов.");
             Console.WriteLine("2. Вывести все предложения в порядке возрастания длины предложения.");
             Console.WriteLine("3. Найти слова заданной длины в вопросительных предложениях.");
@@ -23,7 +23,7 @@ namespace Lab3
             ParseII parser = new ParseII("text.txt");
             parser.Run();
 
-            Text result = parser.GetParsedText();
+            Text tokenedText = parser.GetParsedText();
             parser.Print();
 
             bool isValidKey = false;  
@@ -38,16 +38,19 @@ namespace Lab3
                     case ConsoleKey.D1:
                         Console.Clear();
                         Console.WriteLine("Вы нажали 1");
+                        tokenedText.SortSentencesByWordCount();
 
                         break;
                     case ConsoleKey.D2:
                         Console.Clear();
                         Console.WriteLine("Вы нажали 2");
+                        tokenedText.SortSentencesByLength();
 
                         break;
                     case ConsoleKey.D3:
                         Console.Clear();
                         Console.WriteLine("Вы нажали 3");
+                        tokenedText.SortSentencesByWordCount();
 
                         break;
                     case ConsoleKey.D4:

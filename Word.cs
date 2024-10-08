@@ -6,5 +6,10 @@
         public int wordLength;
 
         public Word() { }
+
+        public override string ToString()
+        {
+            return word;
+        }
     }
 }
