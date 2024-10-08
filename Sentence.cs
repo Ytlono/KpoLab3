@@ -3,6 +3,8 @@
     public class Sentence
     {
         public List<Token> tokens;
+        public int sentenceLengthByWord;
+        public int sentenceLengthBySymbols;
 
         public Sentence()
         {

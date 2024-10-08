@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Dynamic;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 namespace Lab3
@@ -36,7 +37,7 @@ namespace Lab3
         {
             foreach (var sentence in sentenceList)
             {
-                Sentence newSentence = new Sentence(); // Новый объект предложения для каждого цикла
+                Sentence newSentence = new Sentence(); 
 
                 var matches = Regex.Matches(sentence, @"\w+|[.,!?]");
                 foreach (var match in matches)
@@ -45,24 +46,27 @@ namespace Lab3
 
                     if (Regex.IsMatch(token, @"\w+"))
                     {
-                        // Создаем новый объект Word для каждого найденного слова
                         Word newWord = new Word { word = token };
                         newSentence.tokens.Add(newWord);
                     }
                     else if (Regex.IsMatch(token, @"[.,!?]"))
                     {
-                        // Создаем новый объект Punctuation для каждого знака препинания
                         Punctuation newPunctuation = new Punctuation { symbol = token };
                         newSentence.tokens.Add(newPunctuation);
                     }
                 }
 
-                parsedText.sentenceTokenList.Add(newSentence); // Добавляем предложение в общий список
+                parsedText.sentenceTokenList.Add(newSentence); 
             }
         }
 
+        public Text GetParsedText()
+        {
+            return parsedText;
+        }
 
-        private void Print()
+
+        public void Print()
         {
             foreach (var sentence in parsedText.sentenceTokenList)
             {
@@ -70,11 +74,11 @@ namespace Lab3
                 {
                     if (token is Word word)
                     {
-                        Console.WriteLine(word.word); // Вывод слова
+                        Console.WriteLine(word.word); 
                     }
                     else if (token is Punctuation punctuation)
                     {
-                        Console.WriteLine(punctuation.symbol); // Вывод знака препинания
+                        Console.WriteLine(punctuation.symbol); 
                     }
                 }
             }
