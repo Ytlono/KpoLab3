@@ -20,13 +20,21 @@ namespace Lab3
             foreach (var sentence in sortedSentences)
             {
                 Console.WriteLine(sentence.ToString());
+                Console.WriteLine(sentence.SentenceLengthByWord + "\n");
             }
-
+            Console.ReadKey(true);
         }
 
         public void SortSentencesByLength()
         {
-
+       
+            var sortedSentences = sentenceTokenList.OrderBy(sentence => sentence.SentenceLengthByChar);
+            foreach (var sentence in sortedSentences)
+            {
+                Console.WriteLine(sentence.ToString());
+                Console.WriteLine(sentence.SentenceLengthByChar + "\n");
+            }
+            Console.ReadKey(true);
         }
         public List<string> FindWordsInQuestionsByLength(int length)
         {

@@ -3,10 +3,12 @@
     public class Word : Token
     {
         public string word;
-        public int wordLength;
 
-        public Word() { }
-
+        public Word(string word) : base(word)
+        { 
+            this.word = word;
+        }
+      
         public override string ToString()
         {
             return word;

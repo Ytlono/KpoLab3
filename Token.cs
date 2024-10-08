@@ -2,9 +2,11 @@
 {
     public abstract class Token
     {
-        // Базовый класс для токенов
-        protected Token() { }
+        public int tokenLength { get; set; }
 
-
+        protected Token(string value)
+        {
+            tokenLength = value.Length;
+        }
     }
 }

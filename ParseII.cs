@@ -23,8 +23,6 @@ namespace Lab3
 
             List<string> sentencesList = TextToSentences(inputText);
             SentencesToTokens(sentencesList);
-
-            Print();
         }
 
         public List<string> TextToSentences(string text)
@@ -46,16 +44,18 @@ namespace Lab3
 
                     if (Regex.IsMatch(token, @"\w+"))
                     {
-                        Word newWord = new Word { word = token };
+                        Word newWord = new Word(token);
+
                         newSentence.tokens.Add(newWord);
                     }
                     else if (Regex.IsMatch(token, @"[.,!?]"))
                     {
-                        Punctuation newPunctuation = new Punctuation { symbol = token };
+                        Punctuation newPunctuation = new Punctuation(token);
                         newSentence.tokens.Add(newPunctuation);
                     }
                 }
                 newSentence.CalculateSentenceLengthByWord();
+                newSentence.CalculateSentenceLengthByChar();
                 parsedText.sentenceTokenList.Add(newSentence); 
             }
         }

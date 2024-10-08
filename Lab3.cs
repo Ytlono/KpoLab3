@@ -14,66 +14,66 @@ namespace Lab3
             Console.WriteLine("5. Заменить слова заданной длины на указанную подстроку.");
             Console.WriteLine("6. Удалить стоп-слова из текста.");
             Console.WriteLine("7. Экспортировать текст в XML-документ.");
-            Console.WriteLine("0. Выход.");
-            Console.Write("Выберите действие: ");
+            Console.WriteLine("[ESC] -> Выход.\n");
+            Console.Write("Выберите действие:\n");
         }
 
         public static void Main(string[] args)
         {
             ParseII parser = new ParseII("text.txt");
             parser.Run();
-
             Text tokenedText = parser.GetParsedText();
-            parser.Print();
-
+          
             bool isValidKey = false;  
 
             while (!isValidKey)
             {
+                Console.Clear();
                 Menu();
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);  
 
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.D1:
-                        Console.Clear();
-                        Console.WriteLine("Вы нажали 1");
+
+                        Console.WriteLine("\nВы нажали 1\n");
                         tokenedText.SortSentencesByWordCount();
 
                         break;
                     case ConsoleKey.D2:
-                        Console.Clear();
-                        Console.WriteLine("Вы нажали 2");
+
+                        Console.WriteLine("\nВы нажали 2\n");
                         tokenedText.SortSentencesByLength();
 
                         break;
                     case ConsoleKey.D3:
-                        Console.Clear();
+
                         Console.WriteLine("Вы нажали 3");
                         tokenedText.SortSentencesByWordCount();
 
                         break;
                     case ConsoleKey.D4:
-                        Console.Clear();
+
                         Console.WriteLine("Вы нажали 4");
 
                         break;
                     case ConsoleKey.D5:
-                        Console.Clear();
+
                         Console.WriteLine("Вы нажали 5");
 
                         break;
                     case ConsoleKey.D6:
-                        Console.Clear();
+
                         Console.WriteLine("Вы нажали 6");
 
                         break;
                     case ConsoleKey.D7:
-                        Console.Clear();
+
                         Console.WriteLine("Вы нажали 7");
 
                         break;
                     case ConsoleKey.Escape:
+
                         Console.Clear();
                         Console.WriteLine("Вы нажали Esc. Завершение программы.");
 
