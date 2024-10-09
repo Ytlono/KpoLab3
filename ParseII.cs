@@ -45,7 +45,6 @@ namespace Lab3
                     if (Regex.IsMatch(token, @"\w+"))
                     {
                         Word newWord = new Word(token);
-
                         newSentence.tokens.Add(newWord);
                     }
                     else if (Regex.IsMatch(token, @"[.,!?]"))
@@ -54,6 +53,7 @@ namespace Lab3
                         newSentence.tokens.Add(newPunctuation);
                     }
                 }
+               
                 newSentence.CalculateSentenceLengthByWord();
                 newSentence.CalculateSentenceLengthByChar();
                 parsedText.sentenceTokenList.Add(newSentence); 
