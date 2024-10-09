@@ -36,18 +36,53 @@ namespace Lab3
             }
             Console.ReadKey(true);
         }
-        public List<string> FindWordsInQuestionsByLength(int length)
+
+        public void FindWordsInQuestionsByLength(int length)
         {
-            return ["ff","ff"];
+            bool found = false;
+
+            foreach(var sentence in sentenceTokenList)
+            {
+                if(sentence.SentenceType == SentenceTypes.Question) 
+                {
+                    foreach (var token in sentence.tokens)
+                    {
+                        if(token is Word && token.tokenLength == length)
+                        {
+                            found = true;
+                            Console.WriteLine(token.ToString());
+                        }
+
+                    }
+                }
+            }
+            string result = found ? "" : "Not found";
+            Console.WriteLine(result);
+            Console.ReadKey(true);
         }
+
         public void RemoveWordsByLengthStartingWithConsonant(int length)
         {
+            var filteredSentence = new List<Sentence>(sentenceTokenList);
 
+            foreach (var sentence in filteredSentence)
+            {
+                sentence.tokens.RemoveAll(token => token is Word word && word.WordInitialType == WordInitialTypes.Consonant && token.tokenLength == length);
+            }
+
+            foreach (var sentence in filteredSentence)
+            {
+                Console.WriteLine(sentence.ToString());
+            }
+            Console.ReadKey(true);
         }
+
+
         public void ReplaceWordsByLengthInSentence(int sentenceIndex, int length, string replacement)
         {
 
         }
+
         public void RemoveStopWords(string[] stopWords)
         {
 

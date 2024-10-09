@@ -7,8 +7,9 @@ namespace Lab3
     public class ParseII
     {
         private string inputFilePath;
-        public string inputText;
-        public Text parsedText;
+        private string inputText;
+        private Text parsedText;
+        
 
         public ParseII(string inputFilePath)
         {
@@ -46,6 +47,7 @@ namespace Lab3
                     {
                         Word newWord = new Word(token);
                         newSentence.tokens.Add(newWord);
+                        newWord.DetermineWordInitialType();
                     }
                     else if (Regex.IsMatch(token, @"[.,!?]"))
                     {
@@ -56,6 +58,7 @@ namespace Lab3
                
                 newSentence.CalculateSentenceLengthByWord();
                 newSentence.CalculateSentenceLengthByChar();
+                newSentence.DetermineSentenceType();
                 parsedText.sentenceTokenList.Add(newSentence); 
             }
         }

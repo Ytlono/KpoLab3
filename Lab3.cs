@@ -48,13 +48,15 @@ namespace Lab3
                         break;
                     case ConsoleKey.D3:
 
-                        Console.WriteLine("Вы нажали 3");
-                        tokenedText.SortSentencesByWordCount();
+                        Console.Write("\nВы нажали 3\nВведите длину слова: ");
+                        int.TryParse(Console.ReadLine(), out int length);
+                        tokenedText.FindWordsInQuestionsByLength(length);
 
                         break;
                     case ConsoleKey.D4:
-
-                        Console.WriteLine("Вы нажали 4");
+                        Console.Write("\nВы нажали 4\nВведите длину слова: ");
+                        int.TryParse(Console.ReadLine(), out int length2);
+                        tokenedText.RemoveWordsByLengthStartingWithConsonant(length2);
 
                         break;
                     case ConsoleKey.D5:
