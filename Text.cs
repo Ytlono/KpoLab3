@@ -7,10 +7,24 @@ namespace Lab3
     public class Text:IText
     {
         public List<Sentence> sentenceTokenList;
+        private List<string> stopWords;
+        private const string fileStopWords = "stopwords.txt";
 
         public Text()
         {
             this.sentenceTokenList = new List<Sentence>();
+            LoadStopWordsFromFile(fileStopWords);
+        }
+
+        public List<string> StopWords
+        {
+            get { return stopWords; }
+            set { stopWords = value; }
+        }
+        private void LoadStopWordsFromFile(string filePath)
+        {
+            string fileContent = File.ReadAllText(filePath);
+            StopWords = Regex.Split(fileContent, @"\s+").ToList();
         }
 
         public void SortSentencesByWordCount() 
@@ -105,9 +119,27 @@ namespace Lab3
             Console.ReadKey(true);
         }
 
-        public void RemoveStopWords(string[] stopWords)
+       
+        public void RemoveStopWords()
         {
+            var filteredSentenceTokenList = new List<Sentence>(sentenceTokenList);
 
+            foreach (var sentence in filteredSentenceTokenList)
+            {
+                sentence.tokens.RemoveAll(token => token is Word word && stopWords.Contains(word.ToString()));
+            }
+            Console.WriteLine("Оригинал:\n");
+            foreach (var sentence in sentenceTokenList)
+            {
+                Console.WriteLine(sentence.ToString());
+            }
+            Console.WriteLine("Отредактированный:\n");
+            foreach (var sentence in filteredSentenceTokenList)
+            {
+                Console.WriteLine(sentence.ToString());
+            }
+            Console.ReadKey(true);
         }
+
     }
 }

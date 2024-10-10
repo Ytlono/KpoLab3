@@ -7,6 +7,6 @@
         void FindWordsInQuestionsByLength(int length);
         void RemoveWordsByLengthStartingWithConsonant(int length);
         void ReplaceWordsByLengthInSentence(int sentenceIndex, int length, string replacement);
-        void RemoveStopWords(string[] stopWords);
+        void RemoveStopWords();
     }
 }

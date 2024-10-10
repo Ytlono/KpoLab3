@@ -71,7 +71,8 @@ namespace Lab3
                         break;
                     case ConsoleKey.D6:
 
-                        Console.WriteLine("Вы нажали 6");
+                        Console.WriteLine("\nВы нажали 6\n Стоп-слова удалены!\n\n");
+                        tokenedText.RemoveStopWords();
 
                         break;
                     case ConsoleKey.D7:
