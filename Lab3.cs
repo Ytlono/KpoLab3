@@ -11,7 +11,7 @@ namespace Lab3
             Console.WriteLine("2. Вывести все предложения в порядке возрастания длины предложения.");
             Console.WriteLine("3. Найти слова заданной длины в вопросительных предложениях.");
             Console.WriteLine("4. Удалить из текста все слова заданной длины, начинающиеся с согласной.");
-            Console.WriteLine("5. Заменить слова заданной длины на указанную подстроку.");
+            Console.WriteLine("5. Заменить слова заданной длины на указанную подстроку [***].");
             Console.WriteLine("6. Удалить стоп-слова из текста.");
             Console.WriteLine("7. Экспортировать текст в XML-документ.");
             Console.WriteLine("[ESC] -> Выход.\n");
@@ -60,8 +60,13 @@ namespace Lab3
 
                         break;
                     case ConsoleKey.D5:
-
-                        Console.WriteLine("Вы нажали 5");
+                        Console.WriteLine("\nВы нажали 4\n");
+                        tokenedText.PrintSentenceWithNumeration();
+                        Console.Write("Введите номер предложения: ");
+                        int.TryParse(Console.ReadLine(), out int sentenceIndex);
+                        Console.Write("Введите длину слова: ");
+                        int.TryParse(Console.ReadLine(), out int length3);
+                        tokenedText.ReplaceWordsByLengthInSentence(sentenceIndex,length3,"***");
 
                         break;
                     case ConsoleKey.D6:

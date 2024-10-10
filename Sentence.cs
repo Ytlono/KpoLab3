@@ -10,7 +10,7 @@
 
     public class Sentence
     {
-        public List<Token> tokens;
+        public List<Token> tokens; 
         private int sentenceLengthByWord;
         private int sentenceLengthByChar;
         private SentenceTypes sentenceType;

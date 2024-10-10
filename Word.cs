@@ -11,12 +11,18 @@ namespace Lab3
 
     public class Word : Token
     {
-        public string word;
+        private string word;
         private WordInitialTypes wordInitialType;
 
         public Word(string word) : base(word)
         {
             this.word = word;
+        }
+
+        public string WordSetGet
+        {
+            get { return word; }
+            set { word = value; }
         }
 
         public WordInitialTypes WordInitialType

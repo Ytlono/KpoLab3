@@ -77,7 +77,7 @@ namespace Lab3
                 {
                     if (token is Word word)
                     {
-                        Console.WriteLine(word.word); 
+                        Console.WriteLine(word.WordSetGet); 
                     }
                     else if (token is Punctuation punctuation)
                     {

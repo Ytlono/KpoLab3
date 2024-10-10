@@ -63,54 +63,51 @@ namespace Lab3
 
         public void RemoveWordsByLengthStartingWithConsonant(int length)
         {
-            var filteredSentence = new List<Sentence>(sentenceTokenList);
+            var filteredSentenceTokenList = new List<Sentence>(sentenceTokenList);
 
-            foreach (var sentence in filteredSentence)
+            foreach (var sentence in filteredSentenceTokenList)
             {
                 sentence.tokens.RemoveAll(token => token is Word word && word.WordInitialType == WordInitialTypes.Consonant && token.tokenLength == length);
             }
 
-            foreach (var sentence in filteredSentence)
+            foreach (var sentence in filteredSentenceTokenList)
             {
                 Console.WriteLine(sentence.ToString());
             }
-            Console.ReadKey(true);
+            Console.ReadKey(true); 
         }
 
-
+        public void PrintSentenceWithNumeration()
+        {
+            for (int i = 0; i < sentenceTokenList.Count(); i++)
+            {
+                Console.WriteLine($"{i + 1}. " + sentenceTokenList[i].ToString() + "\n");
+            }
+        }
         public void ReplaceWordsByLengthInSentence(int sentenceIndex, int length, string replacement)
         {
+            var filteredSentenceTokenList = new List<Sentence>(sentenceTokenList);
 
+            bool found = false;
+
+            foreach (var token in filteredSentenceTokenList[sentenceIndex - 1].tokens)
+            {
+                if (token is Word word && word.tokenLength == length)
+                {
+                    word.WordSetGet = replacement;
+                    found = true;
+                }
+            }
+           
+            Console.WriteLine(filteredSentenceTokenList[sentenceIndex - 1].ToString());
+            string result = found ? "": "Not found";
+            Console.WriteLine(result);
+            Console.ReadKey(true);
         }
 
         public void RemoveStopWords(string[] stopWords)
         {
 
         }
-
-
-
-
-
-
-
-        //public int WordCharCount()
-        //{
-        //    int lengthWord = 0;
-
-        //    foreach (var sentence in this.sentenceTokenList)
-        //    {
-        //        foreach (var token in sentence.tokens)
-        //        {
-        //            if (token is Word wordToken)
-        //            {
-        //                 lengthWord = wordToken.word.Length;
-        //            }
-        //        }
-        //    }
-        //    return lengthWord;
-        //}
-
-
     }
 }
