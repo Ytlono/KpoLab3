@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Text xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SentenceTokenList>
+    <Sentence>
+      <Tokens>
+        <Token xsi:type="Word">
+          <Word>Today</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>it</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>is</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>spring</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>.</Punctuation>
+        </Token>
+      </Tokens>
+    </Sentence>
+    <Sentence>
+      <Tokens>
+        <Token xsi:type="Word">
+          <Word>A</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>warm</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>breeze</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>gently</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>caresses</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>face</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>,</Punctuation>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>and</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>green</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>leaves</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>on</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>trees</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>are</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>beginning</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>to</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>unfold</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>?</Punctuation>
+        </Token>
+      </Tokens>
+    </Sentence>
+    <Sentence>
+      <Tokens>
+        <Token xsi:type="Word">
+          <Word>There</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>are</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>many</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>people</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>in</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>park</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>children</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>are</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>running</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>and</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>laughing</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>,</Punctuation>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>adults</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>are</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>walking</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>their</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>dogs</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>or</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>reading</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>books</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>on</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>benches</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>.</Punctuation>
+        </Token>
+      </Tokens>
+    </Sentence>
+    <Sentence>
+      <Tokens>
+        <Token xsi:type="Word">
+          <Word>The</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>café</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>smells</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>of</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>freshly</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>brewed</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>coffee</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>and</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>pastries</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>,</Punctuation>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>and</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>people</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>are</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>ordering</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>cappuccinos</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>and</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>croissants</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>.</Punctuation>
+        </Token>
+      </Tokens>
+    </Sentence>
+    <Sentence>
+      <Tokens>
+        <Token xsi:type="Word">
+          <Word>A</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>street</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>musician</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>is</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>playing</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>outside</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>,</Punctuation>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>and</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>his</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>melodies</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>fill</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>air</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>with</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>joy</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>and</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>tranquility</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>.</Punctuation>
+        </Token>
+      </Tokens>
+    </Sentence>
+    <Sentence>
+      <Tokens>
+        <Token xsi:type="Word">
+          <Word>In</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>distance</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>,</Punctuation>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>snow</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>covered</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>mountains</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>are</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>visible</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>,</Punctuation>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>majestically</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>towering</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>over</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>city</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>.</Punctuation>
+        </Token>
+      </Tokens>
+    </Sentence>
+    <Sentence>
+      <Tokens>
+        <Token xsi:type="Word">
+          <Word>Clear</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>weather</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>is</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>expected</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>in</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>evening</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>,</Punctuation>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>perfect</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>for</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>walking</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>and</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>enjoying</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>beauty</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>of</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>the</Word>
+        </Token>
+        <Token xsi:type="Word">
+          <Word>sunset</Word>
+        </Token>
+        <Token xsi:type="Punctuation">
+          <Punctuation>.</Punctuation>
+        </Token>
+      </Tokens>
+    </Sentence>
+  </SentenceTokenList>
+</Text>

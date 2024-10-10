@@ -46,13 +46,13 @@ namespace Lab3
                     if (Regex.IsMatch(token, @"\w+"))
                     {
                         Word newWord = new Word(token);
-                        newSentence.tokens.Add(newWord);
+                        newSentence.Tokens.Add(newWord);
                         newWord.DetermineWordInitialType();
                     }
                     else if (Regex.IsMatch(token, @"[.,!?]"))
                     {
                         Punctuation newPunctuation = new Punctuation(token);
-                        newSentence.tokens.Add(newPunctuation);
+                        newSentence.Tokens.Add(newPunctuation);
                     }
                 }
                
@@ -73,7 +73,7 @@ namespace Lab3
         {
             foreach (var sentence in parsedText.sentenceTokenList)
             {
-                foreach (var token in sentence.tokens)
+                foreach (var token in sentence.Tokens)
                 {
                     if (token is Word word)
                     {
@@ -81,7 +81,7 @@ namespace Lab3
                     }
                     else if (token is Punctuation punctuation)
                     {
-                        Console.WriteLine(punctuation.symbol); 
+                        Console.WriteLine(punctuation.Symbol); 
                     }
                 }
             }

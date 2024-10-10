@@ -1,13 +1,18 @@
-﻿using System.Dynamic;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 namespace Lab3
 {
-    public class Text:IText
+    public class Text : IText
     {
+        [XmlArray("SentenceTokenList")]
+        [XmlArrayItem("Sentence")]
         public List<Sentence> sentenceTokenList;
+
+        [XmlIgnore]
         private List<string> stopWords;
+
+        [XmlIgnore]
         private const string fileStopWords = "stopwords.txt";
 
         public Text()
@@ -16,18 +21,20 @@ namespace Lab3
             LoadStopWordsFromFile(fileStopWords);
         }
 
+        [XmlIgnore]
         public List<string> StopWords
         {
             get { return stopWords; }
             set { stopWords = value; }
         }
+
         private void LoadStopWordsFromFile(string filePath)
         {
             string fileContent = File.ReadAllText(filePath);
             StopWords = Regex.Split(fileContent, @"\s+").ToList();
         }
 
-        public void SortSentencesByWordCount() 
+        public void SortSentencesByWordCount()
         {
             var sortedSentences = sentenceTokenList.OrderBy(sentence => sentence.SentenceLengthByWord);
 
@@ -41,7 +48,6 @@ namespace Lab3
 
         public void SortSentencesByLength()
         {
-       
             var sortedSentences = sentenceTokenList.OrderBy(sentence => sentence.SentenceLengthByChar);
             foreach (var sentence in sortedSentences)
             {
@@ -55,18 +61,17 @@ namespace Lab3
         {
             bool found = false;
 
-            foreach(var sentence in sentenceTokenList)
+            foreach (var sentence in sentenceTokenList)
             {
-                if(sentence.SentenceType == SentenceTypes.Question) 
+                if (sentence.SentenceType == SentenceTypes.Question)
                 {
-                    foreach (var token in sentence.tokens)
+                    foreach (var token in sentence.Tokens)
                     {
-                        if(token is Word && token.tokenLength == length)
+                        if (token is Word && token.TokenLength == length)
                         {
                             found = true;
                             Console.WriteLine(token.ToString());
                         }
-
                     }
                 }
             }
@@ -81,14 +86,14 @@ namespace Lab3
 
             foreach (var sentence in filteredSentenceTokenList)
             {
-                sentence.tokens.RemoveAll(token => token is Word word && word.WordInitialType == WordInitialTypes.Consonant && token.tokenLength == length);
+                sentence.Tokens.RemoveAll(token => token is Word word && word.WordInitialType == WordInitialTypes.Consonant && token.TokenLength == length);
             }
 
             foreach (var sentence in filteredSentenceTokenList)
             {
                 Console.WriteLine(sentence.ToString());
             }
-            Console.ReadKey(true); 
+            Console.ReadKey(true);
         }
 
         public void PrintSentenceWithNumeration()
@@ -98,35 +103,35 @@ namespace Lab3
                 Console.WriteLine($"{i + 1}. " + sentenceTokenList[i].ToString() + "\n");
             }
         }
+
         public void ReplaceWordsByLengthInSentence(int sentenceIndex, int length, string replacement)
         {
             var filteredSentenceTokenList = new List<Sentence>(sentenceTokenList);
 
             bool found = false;
 
-            foreach (var token in filteredSentenceTokenList[sentenceIndex - 1].tokens)
+            foreach (var token in filteredSentenceTokenList[sentenceIndex - 1].Tokens)
             {
-                if (token is Word word && word.tokenLength == length)
+                if (token is Word word && word.TokenLength == length)
                 {
                     word.WordSetGet = replacement;
                     found = true;
                 }
             }
-           
+
             Console.WriteLine(filteredSentenceTokenList[sentenceIndex - 1].ToString());
-            string result = found ? "": "Not found";
+            string result = found ? "" : "Not found";
             Console.WriteLine(result);
             Console.ReadKey(true);
         }
 
-       
         public void RemoveStopWords()
         {
             var filteredSentenceTokenList = new List<Sentence>(sentenceTokenList);
 
             foreach (var sentence in filteredSentenceTokenList)
             {
-                sentence.tokens.RemoveAll(token => token is Word word && stopWords.Contains(word.ToString()));
+                sentence.Tokens.RemoveAll(token => token is Word word && stopWords.Contains(word.ToString()));
             }
             Console.WriteLine("Оригинал:\n");
             foreach (var sentence in sentenceTokenList)
@@ -140,6 +145,5 @@ namespace Lab3
             }
             Console.ReadKey(true);
         }
-
     }
 }

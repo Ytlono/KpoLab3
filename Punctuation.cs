@@ -1,16 +1,25 @@
-﻿namespace Lab3
+﻿using System.Xml.Serialization;
+
+namespace Lab3
 {
     public class Punctuation : Token
     {
-        public string symbol;
+        [XmlElement("Punctuation")]
+        public string Symbol { get; set; }
 
-        public Punctuation(string symbol):base(symbol) 
+        public Punctuation() : base("")
         {
-            this.symbol = symbol;
+            Symbol = string.Empty;
         }
+
+        public Punctuation(string symbol) : base(symbol)
+        {
+            Symbol = symbol;
+        }
+
         public override string ToString()
         {
-            return symbol;
+            return Symbol;
         }
     }
 }

@@ -1,51 +1,42 @@
-﻿namespace Lab3
+﻿using System.Xml.Serialization;
+
+namespace Lab3
 {
     public enum SentenceTypes
     {
         Unknown,
-        Statement,   // Повествовательное
-        Question, // Вопросительное
-        Exclamatory,   // Восклицательное
+        Statement,
+        Question,
+        Exclamatory,
     }
 
     public class Sentence
     {
-        public List<Token> tokens; 
-        private int sentenceLengthByWord;
-        private int sentenceLengthByChar;
-        private SentenceTypes sentenceType;
+        [XmlArray("Tokens")]
+        [XmlArrayItem("Token")]
+        public List<Token> Tokens { get; set; }
+
+        [XmlIgnore]
+        public int SentenceLengthByWord { get; set; }
+
+        [XmlIgnore]
+        public int SentenceLengthByChar { get; set; }
+
+        [XmlIgnore]
+        public SentenceTypes SentenceType { get; set; }
 
         public Sentence()
         {
-            this.tokens = new List<Token>();
-            this.sentenceLengthByWord = 0;
-            this.sentenceLengthByChar = 0;
-            this.sentenceType = SentenceTypes.Unknown;
+            Tokens = new List<Token>();
+            SentenceLengthByWord = 0;
+            SentenceLengthByChar = 0;
+            SentenceType = SentenceTypes.Unknown;
         }
-
-        public int SentenceLengthByWord
-        {
-            get { return sentenceLengthByWord; }
-            set { sentenceLengthByWord = value; }
-        }
-
-        public int SentenceLengthByChar
-        {
-            get { return sentenceLengthByChar; }
-            set { sentenceLengthByChar = value; }
-        }
-
-        public SentenceTypes SentenceType
-        {
-            get { return sentenceType; }
-            set { sentenceType = value; }
-        }
-
 
         public void CalculateSentenceLengthByWord()
         {
-            //SentenceLengthByWord = tokens.Count(type => type is Word);
-            foreach (var token in tokens) {
+            foreach (var token in Tokens)
+            {
                 if (token is Word)
                 {
                     SentenceLengthByWord++;
@@ -55,19 +46,19 @@
 
         public void CalculateSentenceLengthByChar()
         {
-            foreach (Token token in tokens)
+            foreach (Token token in Tokens)
             {
-                SentenceLengthByChar = SentenceLengthByChar + token.tokenLength;
+                SentenceLengthByChar += token.TokenLength;
             }
         }
 
         public void DetermineSentenceType()
         {
-            var lastToken = tokens.LastOrDefault(); 
+            var lastToken = Tokens.LastOrDefault();
 
-            if (lastToken is Punctuation punctuation) 
+            if (lastToken is Punctuation punctuation)
             {
-                switch (punctuation.symbol)
+                switch (punctuation.Symbol)
                 {
                     case "?":
                         SentenceType = SentenceTypes.Question;
@@ -79,21 +70,19 @@
                         SentenceType = SentenceTypes.Statement;
                         break;
                     default:
-                        SentenceType = SentenceTypes.Unknown; 
+                        SentenceType = SentenceTypes.Unknown;
                         break;
                 }
             }
             else
             {
-                SentenceType = SentenceTypes.Unknown; 
+                SentenceType = SentenceTypes.Unknown;
             }
         }
 
-
         public override string ToString()
         {
-            return string.Join(" ", tokens.Select(t => t.ToString()));
+            return string.Join(" ", Tokens.Select(t => t.ToString()));
         }
     }
-
 }

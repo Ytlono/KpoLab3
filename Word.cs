@@ -1,46 +1,56 @@
 ﻿using System.Text.RegularExpressions;
+using System.Xml.Serialization;
 
 namespace Lab3
 {
     public enum WordInitialTypes
     {
         Unknown,
-        Consonant, // Согласная
-        Vowel      // Гласная
+        Consonant,
+        Vowel
     }
 
     public class Word : Token
     {
-        private string word;
-        private WordInitialTypes wordInitialType;
+        private string _word;
+
+        [XmlIgnore]
+        private WordInitialTypes _wordInitialType;
+
+        public Word() : base("")
+        {
+            _word = string.Empty;
+            WordInitialType = WordInitialTypes.Unknown;
+        }
 
         public Word(string word) : base(word)
         {
-            this.word = word;
+            _word = word;
+            WordInitialType = WordInitialTypes.Unknown;
         }
 
+        [XmlElement("Word")]
         public string WordSetGet
         {
-            get { return word; }
-            set { word = value; }
+            get { return _word; }
+            set { _word = value; }
         }
 
+        [XmlIgnore]
         public WordInitialTypes WordInitialType
         {
-            get { return wordInitialType; }
-            set { wordInitialType = value; }
+            get { return _wordInitialType; }
+            set { _wordInitialType = value; }
         }
 
         public override string ToString()
         {
-            return word;
+            return _word;
         }
 
         public void DetermineWordInitialType()
         {
-            //^      - начало строки
-            //[^...] - отрицание. Букв меньше писать :)
-            if (Regex.IsMatch(word, @"^[^aeiouAEIOUаеёиоуыэюяАЕЁИОУЫЭЮЯ]"))
+            if (Regex.IsMatch(_word, @"^[^aeiouAEIOUаеёиоуыэюяАЕЁИОУЫЭЮЯ]"))
             {
                 WordInitialType = WordInitialTypes.Consonant;
             }

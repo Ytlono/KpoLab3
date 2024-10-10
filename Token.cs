@@ -1,12 +1,19 @@
-﻿namespace Lab3
+﻿using System.Xml.Serialization;
+
+namespace Lab3
 {
+    [XmlInclude(typeof(Word))]
+    [XmlInclude(typeof(Punctuation))]
     public abstract class Token
     {
-        public int tokenLength { get; set; }
+        [XmlIgnore]
+        public int TokenLength { get; set; }
 
         protected Token(string value)
         {
-            tokenLength = value.Length;
+            TokenLength = value.Length;
         }
+
+        protected Token() { }
     }
 }
