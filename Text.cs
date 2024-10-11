@@ -7,7 +7,7 @@ namespace Lab3
     {
         [XmlArray("SentenceTokenList")]
         [XmlArrayItem("Sentence")]
-        public List<Sentence> sentenceTokenList;
+        public List<Sentence> sentenceTokenList { set; get; }
 
         [XmlIgnore]
         private List<string> stopWords;
@@ -15,9 +15,10 @@ namespace Lab3
         [XmlIgnore]
         private const string fileStopWords = "stopwords.txt";
 
+
         public Text()
         {
-            this.sentenceTokenList = new List<Sentence>();
+            sentenceTokenList = new List<Sentence>();
             LoadStopWordsFromFile(fileStopWords);
         }
 

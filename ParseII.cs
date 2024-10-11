@@ -6,15 +6,15 @@ namespace Lab3
 {
     public class ParseII
     {
-        private string inputFilePath;
-        private string inputText;
-        private Text parsedText;
+        private string inputFilePath { get; set;}
+        private string inputText{get; set;}
+        private Text parsedText{get;set;}
         
 
-        public ParseII(string inputFilePath)
+        public ParseII(string InputFilePath)
         {
-            this.inputFilePath = inputFilePath;
-            this.parsedText = new Text();
+            inputFilePath = InputFilePath;
+            parsedText = new Text();
         }
 
         public void Run()

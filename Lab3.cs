@@ -30,6 +30,7 @@ namespace Lab3
             {
                 serializer.Serialize(writer, text);
             }
+            Console.WriteLine("...Нажмите любую клавишу для продолжения...");
             Console.ReadKey(true);
         }
 
@@ -67,7 +68,7 @@ namespace Lab3
                         int.TryParse(Console.ReadLine(), out int length2);
                         tokenedText.RemoveWordsByLengthStartingWithConsonant(length2);
                         break;
-                    case ConsoleKey.D5:
+                    case ConsoleKey.D5: 
                         Console.WriteLine("\nВы нажали 5\n");
                         tokenedText.PrintSentenceWithNumeration();
                         Console.Write("Введите номер предложения: ");
