@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.Design;
-using System.IO;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Lab3
 {

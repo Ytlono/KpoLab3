@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-using System.Text.RegularExpressions;
-using System.Xml.Serialization;
+﻿using System.Text.RegularExpressions;
 
 namespace Lab3
 {
@@ -19,9 +17,10 @@ namespace Lab3
 
         public void Run()
         {
-            using StreamReader reader = new StreamReader(inputFilePath);
-            inputText = reader.ReadToEnd();
-
+            using (StreamReader reader = new StreamReader(inputFilePath))
+            {
+                inputText = reader.ReadToEnd();
+            }
             List<string> sentencesList = TextToSentences(inputText);
             SentencesToTokens(sentencesList);
         }
