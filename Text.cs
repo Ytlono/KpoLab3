@@ -5,7 +5,7 @@ namespace Lab3
 {
     public class Text : IText
     {
-        [XmlArray("SentenceTokenList")]
+        [XmlArray("Text")]
         [XmlArrayItem("Sentence")]
         public List<Sentence> sentenceTokenList { set; get; }
 

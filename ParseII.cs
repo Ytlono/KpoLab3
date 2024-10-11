@@ -14,7 +14,7 @@ namespace Lab3
             inputFilePath = InputFilePath;
             parsedText = new Text();
         }
-
+       
         public void Run()
         {
             using (StreamReader reader = new StreamReader(inputFilePath))
@@ -35,14 +35,14 @@ namespace Lab3
         {
             foreach (var sentence in sentenceList)
             {
-                Sentence newSentence = new Sentence(); 
+                Sentence newSentence = new Sentence();
 
-                var matches = Regex.Matches(sentence, @"\w+|[.,!?]");
+                var matches = Regex.Matches(sentence, @"[a-zA-Zа-яА-ЯёЁ]+|[.,!?]"); 
                 foreach (var match in matches)
                 {
                     string token = match.ToString();
 
-                    if (Regex.IsMatch(token, @"\w+"))
+                    if (Regex.IsMatch(token, @"[a-zA-Zа-яА-ЯёЁ]+"))
                     {
                         Word newWord = new Word(token);
                         newSentence.Tokens.Add(newWord);
@@ -54,7 +54,8 @@ namespace Lab3
                         newSentence.Tokens.Add(newPunctuation);
                     }
                 }
-               
+
+
                 newSentence.CalculateSentenceLengthByWord();
                 newSentence.CalculateSentenceLengthByChar();
                 newSentence.DetermineSentenceType();

@@ -4,7 +4,7 @@ namespace Lab3
 {
     internal class Lab3
     {
-        private static string XMLFile = "exported_text.xml";
+        private static string XMLFile = "exported.xml";
         private static string replacement = "***";
 
         private static void Menu()
@@ -19,7 +19,7 @@ namespace Lab3
             Console.WriteLine("7. Экспортировать текст в XML-документ.");
             Console.WriteLine("[ESC] -> Выход.\n");
             Console.Write("Выберите действие:\n");
-        }
+        } 
 
         public static void ExportToXml(Text text, string filePath)
         {
